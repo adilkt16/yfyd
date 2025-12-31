@@ -131,10 +131,20 @@ img { max-width: 100%; display: block; }
 }
 .hero-inner { text-align: left; }
 .hero-title { font-size: var(--fs-900); letter-spacing: 0.5px; margin: 0 0 var(--space-4); }
+.hero-event-name { 
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 var(--space-5);
+  text-transform: uppercase;
+  line-height: 1.1;
+}
 .hero-sub { color: var(--muted); font-size: var(--fs-500); margin-bottom: var(--space-6); }
-.hero-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-6); }
-.hero-highlights { display: flex; gap: var(--space-5); color: var(--muted); padding: 0; margin: 0; list-style: none; flex-wrap: wrap; }
-.hero-highlights li { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; }
+.hero-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; }
 
 /*--------------------------------------------------------------
   Buttons
@@ -187,14 +197,6 @@ img { max-width: 100%; display: block; }
 --------------------------------------------------------------*/
 .contact-details { list-style: none; padding: 0; margin: var(--space-5) 0 0; color: var(--muted); }
 .contact-details li { margin-bottom: var(--space-3); }
-
-.contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-1); padding: var(--space-6); }
-.form-group { display: grid; gap: 8px; margin-bottom: var(--space-5); }
-label { font-weight: 600; }
-input, textarea { width: 100%; padding: 0.9rem 1rem; border-radius: 10px; border: 1px solid var(--border); background: #0f1530; color: var(--text); font-size: var(--fs-400); }
-input::placeholder, textarea::placeholder { color: #8b93aa; }
-.error { color: color-mix(in oklab, #ff6b6b, white 10%); min-height: 1.15em; }
-.form-status { margin-top: var(--space-4); color: var(--accent); }
 
 /*--------------------------------------------------------------
   Event Showcase
@@ -281,17 +283,6 @@ input::placeholder, textarea::placeholder { color: #8b93aa; }
   margin-bottom: var(--space-5);
   text-transform: uppercase;
   opacity: 0.95;
-}
-
-.event-description {
-  font-size: var(--fs-500);
-  color: var(--muted);
-  line-height: 1.8;
-  margin: 0;
-}
-
-.event-description p {
-  margin: 0;
 }
 
 @media (max-width: 768px) {
