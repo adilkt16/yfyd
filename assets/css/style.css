@@ -196,10 +196,34 @@ img { max-width: 100%; display: block; }
 .feature-icon { color: var(--accent-2); font-size: 1.1rem; }
 
 /*--------------------------------------------------------------
-  About / Vision sections
+  About / Vision / Mission sections
 --------------------------------------------------------------*/
 .section h2 { font-size: var(--fs-700); margin: 0 0 var(--space-4); }
 .section p { font-size: var(--fs-400); color: var(--muted); }
+
+.mission-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-5) 0 0;
+}
+
+.mission-list li {
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  background: rgba(79, 209, 197, 0.05);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  font-size: var(--fs-400);
+  line-height: 1.7;
+}
+
+.mission-list li::before {
+  content: "▸";
+  color: var(--accent);
+  font-weight: bold;
+  margin-right: var(--space-3);
+}
 
 /*--------------------------------------------------------------
   Sponsors
@@ -395,45 +419,6 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
   margin: 0;
   line-height: 1.7;
-}
-
-.criteria-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-6);
-  margin: var(--space-8) 0;
-}
-
-.criteria-item {
-  display: flex;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  background: rgba(16, 22, 50, 0.5);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  transition: all 300ms ease;
-}
-
-.criteria-item:hover {
-  border-color: var(--accent);
-  background: rgba(79, 209, 197, 0.08);
-}
-
-.criteria-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.criteria-item h4 {
-  margin: 0 0 var(--space-2) 0;
-  color: var(--text);
-}
-
-.criteria-item p {
-  margin: 0;
-  color: var(--muted);
-  font-size: var(--fs-300);
 }
 
 .prizes-grid {
