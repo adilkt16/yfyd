@@ -116,11 +116,22 @@ img { max-width: 100%; display: block; }
 @media (max-width: 840px) {
   .nav-toggle { display: inline-flex; flex-direction: column; }
   .site-nav { position: fixed; inset: 60px 0 auto 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(79, 209, 197, 0.12) 50%, rgba(255, 209, 102, 0.15) 100%); 
-    backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 209, 102, 0.2);
+    backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 209, 102, 0.3);
     transform: translateY(-100%); transition: transform 260ms ease; z-index: 999; 
     visibility: hidden; opacity: 0; }
   .site-nav.open { transform: translateY(0); visibility: visible; opacity: 1; }
   .site-nav ul { flex-direction: column; gap: var(--space-4); padding: var(--space-5); }
+  .site-nav a { 
+    color: #0b1023; 
+    background: rgba(255, 255, 255, 0.7);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    display: block;
+    transition: background 200ms ease;
+  }
+  .site-nav a:hover {
+    background: rgba(255, 255, 255, 0.95);
+  }
   
   /* Hamburger to X animation */
   .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { 
