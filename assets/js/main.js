@@ -1,145 +1,155 @@
-/*
-  YFYD — Youth For Youth Development
-  Vanilla JS for interactions, accessibility, and micro-animations.
-*/
-
 (function () {
-  const qs = (sel, root = document) => root.querySelector(sel);
-  const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const q = (selector, root = document) => root.querySelector(selector);
+  const qa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
-  // Current year in footer
-  const yearEl = qs('#year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const year = q("#year");
+  if (year) {
+    year.textContent = String(new Date().getFullYear());
+  }
 
-  // Mobile nav toggle
-  const navToggle = qs('.nav-toggle');
-  const siteNav = qs('#site-nav');
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', () => {
-      const open = siteNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-
-    // Close menu on link click (mobile)
-    siteNav.addEventListener('click', (e) => {
-      const link = e.target.closest('a');
-      if (!link) return;
-      if (siteNav.classList.contains('open')) {
-        siteNav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
+  const body = document.body;
+  const currentPage = body.getAttribute("data-page");
+  if (currentPage) {
+    qa("[data-page-link]").forEach((link) => {
+      const isActive = link.getAttribute("data-page-link") === currentPage;
+      if (isActive) {
+        link.classList.add("is-active");
+        link.setAttribute("aria-current", "page");
       }
     });
   }
 
-  // Smooth scroll with accessible focus management
-  qsa('a[href^="#"]').forEach((a) => {
-    a.addEventListener('click', (e) => {
-      const targetId = a.getAttribute('href').slice(1);
-      if (!targetId) return;
-      const targetEl = qs(`#${CSS.escape(targetId)}`);
-      if (!targetEl) return;
-      e.preventDefault();
-      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Move focus for screen readers
-      targetEl.setAttribute('tabindex', '-1');
-      targetEl.focus({ preventScroll: true });
+  const navToggle = q(".nav-toggle");
+  const siteNav = q("#site-nav");
+  if (navToggle && siteNav) {
+    const closeMenu = () => {
+      siteNav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    };
+
+    navToggle.addEventListener("click", () => {
+      const willOpen = !siteNav.classList.contains("open");
+      siteNav.classList.toggle("open", willOpen);
+      navToggle.setAttribute("aria-expanded", String(willOpen));
+    });
+
+    siteNav.addEventListener("click", (event) => {
+      const targetLink = event.target.closest("a");
+      if (!targetLink) {
+        return;
+      }
+      if (window.matchMedia("(max-width: 1080px)").matches) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!siteNav.classList.contains("open")) {
+        return;
+      }
+      const clickedInside = siteNav.contains(event.target) || navToggle.contains(event.target);
+      if (!clickedInside) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1080) {
+        closeMenu();
+      }
+    });
+  }
+
+  qa('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      const targetId = anchor.getAttribute("href").slice(1);
+      if (!targetId) {
+        return;
+      }
+
+      const target = q(`#${CSS.escape(targetId)}`);
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
     });
   });
 
-  // Intersection-based reveal animations
-  const animateEls = qsa('[data-animate]');
-  if ('IntersectionObserver' in window && animateEls.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          io.unobserve(entry.target);
+  const revealElements = qa("[data-reveal]");
+  if (revealElements.length) {
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries, io) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -8% 0px" }
+      );
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+    }
+  }
+
+  qa(".join-form").forEach((form) => {
+    const feedback = q(".form-feedback", form);
+
+    const setFieldError = (field, message) => {
+      const errorNode = q(`[data-error-for='${field.id}']`, form);
+      if (errorNode) {
+        errorNode.textContent = message || "";
+      }
+      field.setAttribute("aria-invalid", message ? "true" : "false");
+    };
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      let valid = true;
+      const requiredFields = qa("[required]", form);
+
+      requiredFields.forEach((field) => {
+        const value = field.value.trim();
+        let message = "";
+
+        if (!value) {
+          message = "This field is required.";
+        } else if (field.type === "email") {
+          const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+          if (!emailOk) {
+            message = "Enter a valid email address.";
+          }
+        }
+
+        setFieldError(field, message);
+        if (message) {
+          valid = false;
         }
       });
-    }, { rootMargin: '0px 0px -10% 0px' });
-    animateEls.forEach((el) => io.observe(el));
-  } else {
-    // Fallback: show all
-    animateEls.forEach((el) => el.classList.add('in-view'));
-  }
 
-  // Active nav state based on scroll position
-  const sections = qsa('main section[id]');
-  const navLinks = qsa('.site-nav a');
-  const setActive = (id) => {
-    navLinks.forEach((l) => {
-      const href = l.getAttribute('href');
-      const isMatch = href === `#${id}`;
-      l.setAttribute('aria-current', isMatch ? 'page' : 'false');
-    });
-  };
-  const spy = () => {
-    let current = sections[0]?.id || 'home';
-    const scrollY = window.scrollY + 120; // offset for sticky header
-    for (const sec of sections) {
-      if (sec.offsetTop <= scrollY) current = sec.id;
-    }
-    setActive(current);
-  };
-  spy();
-  window.addEventListener('scroll', () => { requestAnimationFrame(spy); });
-
-  // Contact form validation and fake submission
-  const form = qs('#contactForm');
-  if (form) {
-    const statusEl = qs('#form-status');
-    const fields = {
-      name: qs('#name'),
-      email: qs('#email'),
-      message: qs('#message'),
-    };
-    const errors = {
-      name: qs('#error-name'),
-      email: qs('#error-email'),
-      message: qs('#error-message'),
-    };
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const validate = () => {
-      let valid = true;
-      // Name
-      if (!fields.name.value.trim() || fields.name.value.trim().length < 2) {
-        errors.name.textContent = 'Please enter your full name.';
-        valid = false;
-      } else {
-        errors.name.textContent = '';
-      }
-      // Email
-      if (!emailRegex.test(fields.email.value.trim())) {
-        errors.email.textContent = 'Please enter a valid email address.';
-        valid = false;
-      } else {
-        errors.email.textContent = '';
-      }
-      // Message
-      if (!fields.message.value.trim() || fields.message.value.trim().length < 10) {
-        errors.message.textContent = 'Message should be at least 10 characters.';
-        valid = false;
-      } else {
-        errors.message.textContent = '';
-      }
-      return valid;
-    };
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      statusEl.textContent = '';
-      if (!validate()) {
-        statusEl.textContent = 'Please fix the highlighted fields.';
+      if (!valid) {
+        if (feedback) {
+          feedback.style.color = "#b13b3b";
+          feedback.textContent = "Please complete the highlighted fields.";
+        }
         return;
       }
-      // Simulate async submission
-      statusEl.textContent = 'Sending…';
-      setTimeout(() => {
-        statusEl.textContent = 'Thank you! We will be in touch shortly.';
-        form.reset();
-      }, 900);
+
+      if (feedback) {
+        feedback.style.color = "#2e6f4f";
+        feedback.textContent = "Thank you. Your request has been recorded. Our team will connect with you shortly.";
+      }
+      form.reset();
     });
-  }
+  });
 })();

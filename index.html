@@ -3,209 +3,246 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>YFYD — India’s Biggest International Best Manager Event</title>
-  <meta name="description" content="YFYD (Youth For Youth Development) is building India’s most powerful youth leadership platform. Explore our flagship Best Manager Event." />
-  <meta name="theme-color" content="#0b1023" />
+  <title>YFYD | Youth for Youth Development</title>
+  <meta name="description" content="Youth for Youth Development (YFYD) is building India's most structured youth growth ecosystem through mentorship, practical learning, and cross-college collaboration." />
+  <meta name="theme-color" content="#0b3b67" />
   <link rel="icon" type="image/png" href="assets/yfydlogo_small.png" />
-  <link rel="shortcut icon" type="image/png" href="assets/yfydlogo_small.png" />
-  <link rel="preload" href="assets/css/style.css" as="style" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
-  <!-- Skip link for accessibility -->
-  <a class="skip-link" href="#main">Skip to content</a>
+<body data-page="home">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- Site Header -->
   <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="YFYD home">
-        <img class="brand-logo" src="assets/yfydlogo_small.png" alt="YFYD Logo" />
-        <span class="brand-text">Youth For Youth Development</span>
+    <div class="top-strip">
+      <div class="container top-strip-inner">
+        <p>Registered LLP in Kozhikode, Kerala</p>
+        <p>Founder: Faiz Ahamed</p>
+      </div>
+    </div>
+    <div class="container header-main">
+      <a class="brand" href="index.html" aria-label="YFYD home">
+        <img src="assets/yfydlogo_small.png" alt="YFYD logo" />
+        <span class="brand-text">
+          <strong>Youth for Youth Development</strong>
+          <small>Structured Youth Growth Ecosystem</small>
+        </span>
       </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
-      <nav id="site-nav" class="site-nav" role="navigation" aria-label="Primary">
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
         <ul>
-          <li><a class="nav-link" href="#home">Home</a></li>
-          <li><a class="nav-link" href="#flagship">About Event</a></li>
-          <li><a class="nav-link" href="#about">About Us</a></li>
-          <li><a class="nav-link" href="#vision">Vision</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li><a data-page-link="home" href="index.html">Home</a></li>
+          <li><a data-page-link="about" href="about.html">About</a></li>
+          <li><a data-page-link="contact" href="contact.html">Contact</a></li>
         </ul>
+        <a class="btn btn-primary nav-cta" href="contact.html">Join YFYD</a>
       </nav>
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-    <!-- Hero -->
-    <section id="home" class="section hero" aria-labelledby="hero-title">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <h1 id="hero-title" class="hero-title">India's Biggest International Best Manager Event</h1>        <div class="hero-event-name">IMPERIUM</div>        <p class="hero-sub">India's largest and most prestigious international Best Manager competition — a flagship platform showcasing exceptional leadership talent</p>
-        <div class="hero-ctas">
-          <a class="button button-primary" href="imperium/">Explore IMPERIUM</a>
-          <a class="button button-outline" href="imperium/#register">Register Now</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Flagship Event -->
-    <section id="flagship" class="section section-pad" aria-labelledby="flagship-title">
-      <div class="container grid-2">
-        <div class="content" data-animate="fade-up">
-          <h2 id="flagship-title">About the Flagship Event</h2>
-          <p>
-            IMPERIUM is the inaugural flagship initiative of Youth for Youth
-            Development (YFYD – LLP) and is positioned as India’s biggest
-            International Best Manager platform. Designed at a scale that goes beyond
-            conventional management fests, IMPERIUM sets new benchmarks in
-            magnitude, competitiveness, and value.
+  <main id="main-content">
+    <section class="hero-home">
+      <div class="container hero-layout">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">Youth for Youth Development (YFYD)</p>
+          <h1>Building India's Most Structured Youth Growth Ecosystem</h1>
+          <p class="lead">
+            YFYD is a student and youth-driven initiative evolving into a scalable and structured ecosystem where students learn,
+            lead, and grow through practical exposure and cross-college collaboration.
           </p>
-          <div class="cta-inline">
-            <a class="button button-primary" href="#contact">About Event / Registration</a>
+          <div class="button-row">
+            <a class="btn btn-primary" href="contact.html">Join the Movement</a>
+            <a class="btn btn-secondary" href="about.html">Learn More</a>
           </div>
         </div>
-        <div class="event-showcase" data-animate="fade-up">
-          <div class="event-name-wrapper">
-            <h2 class="event-name">IMPERIUM</h2>
-            <div class="event-tagline">India's Premier Management & Leadership Competition</div>
+
+        <aside class="hero-panel" data-reveal>
+          <h2>At a Glance</h2>
+          <ul class="panel-list">
+            <li><strong>5 Districts</strong><span>Early demand demonstrated across Kerala.</span></li>
+            <li><strong>3 Principals</strong><span>Verbal agreements for official student chapters.</span></li>
+            <li><strong>6 Pillars</strong><span>Integrated model for personal and professional growth.</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split-layout">
+        <div data-reveal>
+          <div class="section-header left">
+            <p class="eyebrow">About YFYD</p>
+            <h2>A Structured Answer to a National Youth Gap</h2>
           </div>
+          <p>
+            India has immense youth talent but lacks a consistent system to develop, connect, and guide students toward real outcomes.
+            YFYD addresses this gap with a structured, repeatable development model designed by students and built for scale.
+          </p>
+          <p class="quote-line">"From fragmented efforts to a unified, scalable youth ecosystem."</p>
+        </div>
+
+        <div class="info-panel" data-reveal>
+          <h3>Core Challenge</h3>
+          <ul class="bullet-list">
+            <li>No practical exposure to real-world learning.</li>
+            <li>Limited mentorship and industry insights.</li>
+            <li>No structured growth pathway across institutions.</li>
+            <li>Institutional isolation with minimal cross-college collaboration.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- About Us -->
-    <section id="about" class="section section-pad alt" aria-labelledby="about-title">
-      <div class="container narrow" data-animate="fade-up">
-        <h2 id="about-title">About YFYD</h2>
-        <p>
-          Youth for Youth Development (YFYD) is a youth-led professional
-          platform, registered as a Limited Liability Partnership (LLP), that
-          designs and delivers high-impact national and international
-          leadership events. Focused on excellence, scale, and global standards,
-          YFYD creates competitive platforms that identify, challenge, and
-          elevate the leaders of tomorrow.
-        </p>
-      </div>
-    </section>
-    <!-- Chamber Logos & Descriptions -->
-    <section id="chambers" class="section section-pad" aria-labelledby="chambers-title">
-      <div class="container" data-animate="fade-up">
-        <h2 id="chambers-title">Our Partners</h2>
-        <div class="chamber-grid" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
-          <div class="chamber-card" style="flex: 1 1 300px; max-width: 340px; text-align: center;">
-            <img src="assets/chambers/cma logo.png" alt="CMA Logo" style="width: 120px; height: auto; margin-bottom: 1rem;" />
-            <div class="chamber-desc">
-              Calicut Management Association (CMA), affiliated with the All India Management Association, is a professional body based in Calicut that brings together management professionals, entrepreneurs, business leaders, academicians, and students to promote professional management practices.
-            </div>
-          </div>
-          <div class="chamber-card" style="flex: 1 1 300px; max-width: 340px; text-align: center;">
-            <img src="assets/chambers/ccc logo.png" alt="CCC Logo" style="width: 120px; height: auto; margin-bottom: 1rem;" />
-            <div class="chamber-desc">
-              The Calicut Chamber of Commerce and Industry serves as a unified platform for the business community, promoting economic, social, and cultural development in the region. It supports trade and industry growth by fostering collaboration, advocating business interests, and providing essential support services.
-            </div>
-          </div>
-          <div class="chamber-card" style="flex: 1 1 300px; max-width: 340px; text-align: center;">
-            <img src="assets/chambers/farook.jpeg" alt="Farook Logo" style="width: 120px; height: auto; margin-bottom: 1rem;" />
-            <div class="chamber-desc">
-              Farook College, established in 1948 in Kozhikode, Kerala, is a premier, NAAC A++ accredited (2025) autonomous institution known for empowering marginalized communities. As the largest aided residential postgraduate college in Kerala. 
-            </div>
-          </div>
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <p class="eyebrow">Core Ecosystem Framework</p>
+          <h2>Six Integrated Pillars of Development</h2>
+          <p>An integrated ecosystem, not just a community.</p>
+        </div>
+
+        <div class="card-grid six" data-reveal>
+          <article class="card"><h3>Youth Empowerment</h3><p>Confidence-building and student ownership in growth journeys.</p></article>
+          <article class="card"><h3>Development</h3><p>Consistent personal and professional capability building.</p></article>
+          <article class="card"><h3>Leadership</h3><p>Execution responsibility that develops decision-making strength.</p></article>
+          <article class="card"><h3>Networking</h3><p>Cross-college collaboration beyond institutional boundaries.</p></article>
+          <article class="card"><h3>Innovation</h3><p>Problem-solving orientation through practical challenges.</p></article>
+          <article class="card"><h3>Entrepreneurship</h3><p>Turning initiative into value through guided opportunity pathways.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- Sponsors -->
-    <!-- <section id="sponsors" class="section section-pad" aria-labelledby="sponsors-title">
-      <div class="container" data-animate="fade-up">
-        <h2 id="sponsors-title">Sponsors & Partners</h2>
-        <p class="section-lead">A premium showcase designed to attract leading brands and institutions.</p>
-        <div class="sponsor-grid" role="list">
-          <div class="sponsor-card" role="listitem" aria-label="Sponsor placeholder">
-            <div class="logo-placeholder" aria-hidden="true">LOGO</div>
-            <div class="sponsor-meta">
-              <h3>Title Sponsor</h3>
-              <p>Reserved for a national leader in youth empowerment.</p>
-            </div>
-          </div>
-          <div class="sponsor-card" role="listitem" aria-label="Sponsor placeholder">
-            <div class="logo-placeholder" aria-hidden="true">LOGO</div>
-            <div class="sponsor-meta">
-              <h3>Powered By</h3>
-              <p>Premium partner driving scale and excellence.</p>
-            </div>
-          </div>
-          <div class="sponsor-card" role="listitem" aria-label="Sponsor placeholder">
-            <div class="logo-placeholder" aria-hidden="true">LOGO</div>
-            <div class="sponsor-meta">
-              <h3>Associate Partner</h3>
-              <p>Strategic collaboration for talent and innovation.</p>
-            </div>
-          </div>
-          <div class="sponsor-card" role="listitem" aria-label="Sponsor placeholder">
-            <div class="logo-placeholder" aria-hidden="true">LOGO</div>
-            <div class="sponsor-meta">
-              <h3>Community Partner</h3>
-              <p>Amplifying reach and grassroots engagement.</p>
-            </div>
-          </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <p class="eyebrow">Programs and Value Delivery</p>
+          <h2>Learning by Doing, Not Just Listening</h2>
+        </div>
+
+        <div class="card-grid three" data-reveal>
+          <article class="card">
+            <h3>Mentorship</h3>
+            <ul class="card-list">
+              <li>Peer and expert-led guidance</li>
+              <li>Leadership grooming</li>
+              <li>Career direction support</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Training Programs</h3>
+            <ul class="card-list">
+              <li>Skill-based and industry-relevant modules</li>
+              <li>Application-focused learning design</li>
+              <li>Structured growth pathways</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Sessions and Events</h3>
+            <ul class="card-list">
+              <li>Workshops and panel discussions</li>
+              <li>Interactive peer sessions</li>
+              <li>Real-world simulations and execution</li>
+            </ul>
+          </article>
         </div>
       </div>
-    </section> -->
+    </section>
 
-    <!-- Vision -->
-    <section id="vision" class="section section-pad alt" aria-labelledby="vision-title">
-      <div class="container narrow" data-animate="fade-up">
-        <h2 id="vision-title">Our Vision</h2>
-        <p>
-          To become India’s most powerful youth leadership platform,
-          shaping leaders, innovators, strategists, and change-creators
-          across industries and society.
-        </p>
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <p class="eyebrow">Impact and Traction</p>
+          <h2>Early Validation with Strong Expansion Potential</h2>
+        </div>
+
+        <div class="metric-grid" data-reveal>
+          <article class="metric">
+            <p class="metric-value">5</p>
+            <p class="metric-label">Districts in Kerala</p>
+            <p class="metric-note">Demand observed across student communities.</p>
+          </article>
+          <article class="metric">
+            <p class="metric-value">3</p>
+            <p class="metric-label">College Principals</p>
+            <p class="metric-note">Verbal agreements to start official chapters.</p>
+          </article>
+          <article class="metric">
+            <p class="metric-value">Rising</p>
+            <p class="metric-label">Engagement</p>
+            <p class="metric-note">Participation is increasing across initial initiatives.</p>
+          </article>
+        </div>
+
+        <div class="validation-strip" data-reveal>
+          <p>Growing college interest</p>
+          <p>Cross-institution demand</p>
+          <p>Scalable chapter model</p>
+        </div>
       </div>
     </section>
-    <!-- Mission -->
-    <section id="mission" class="section section-pad" aria-labelledby="mission-title">
-      <div class="container narrow" data-animate="fade-up">
-        <h2 id="mission-title">Our Mission</h2>
-        <ul class="mission-list">
-          <li>Inspire and empower youth to lead, innovate, and drive meaningful change across industries and society.</li>
-          <li>Build a vibrant community where young leaders mentor, collaborate, and turn ideas into impactful action.</li>
-          <li>Foster youth-led initiatives that cultivate strategic thinking, innovation, and purposeful influence for a better future.</li>
-        </ul>
-      </div>
-    </section>
-    <!-- Contact -->
-    <section id="contact" class="section section-pad" aria-labelledby="contact-title">
-      <div class="container narrow" data-animate="fade-up">
-        <h2 id="contact-title">Get in Touch</h2>
-        <p>Join IMPERIUM, explore partnership opportunities, or connect with India's premier youth leadership network.</p>
-        <ul class="contact-details" role="list">
-          <li><strong>Email:</strong> contact@yfyd.org</li>
-          <!-- <li><strong>IMPERIUM Queries:</strong> imperium@yfyd.in</li> -->
-          <!-- <li><strong>Partnerships:</strong> partnerships@yfyd.in</li> -->
-          <li><strong>Phone:</strong> +91 91888 37624</li>
-        </ul>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <div>
+            <p class="eyebrow">Call to Action</p>
+            <h2>Build a Future Where Students Are Empowered, Connected, and Opportunity-Ready</h2>
+            <p>YFYD is a structured movement with clear systems, measurable traction, and a scalable roadmap.</p>
+          </div>
+          <div class="button-row">
+            <a class="btn btn-primary" href="contact.html">Join as a Student</a>
+            <a class="btn btn-secondary" href="contact.html">Partner as an Institution</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <p>
-        © <span id="year"></span> YFYD — Youth For Youth Development. All rights reserved.
-      </p>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#about">About</a>
-        <a href="#vision">Vision</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <div class="container footer-grid">
+      <section>
+        <h3>Youth for Youth Development</h3>
+        <p>
+          A student and youth-driven initiative building a structured development ecosystem for practical learning,
+          leadership, and opportunity readiness.
+        </p>
+      </section>
+      <section>
+        <h4>Organization</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="contact.html">Join as a Student</a></li>
+          <li><a href="contact.html">Partner as an Institution</a></li>
+          <li><a href="contact.html">Become a Sponsor</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Contact</h4>
+        <ul>
+          <li>contact@yfyd.org</li>
+          <li>+91 91888 37624</li>
+          <li>Kozhikode, Kerala</li>
+        </ul>
+      </section>
+    </div>
+    <div class="container footer-bottom">
+      <p>Copyright <span id="year"></span> YFYD. All rights reserved.</p>
+      <a href="contact.html">Join YFYD</a>
     </div>
   </footer>
 
