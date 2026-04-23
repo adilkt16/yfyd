@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join YFYD | Structured Onboarding</title>
+  <meta name="description" content="Join YFYD through a professional funnel: join button, prospectus download, code-of-conduct acknowledgement, and application form." />
+  <meta name="theme-color" content="#0b3b67" />
+  <link rel="icon" type="image/png" href="assets/yfydlogo_small.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-page="join">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-main">
+      <a class="brand" href="index.html" aria-label="YFYD home">
+        <img src="assets/yfydlogo_small.png" alt="YFYD logo" />
+        <span class="brand-text">
+          <strong>Youth for Youth Development</strong>
+          <small>Corporate Standard Youth Platform</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a data-page-link="home" href="index.html">Home</a></li>
+          <li><a data-page-link="about" href="about.html">About</a></li>
+          <li><a data-page-link="events" href="events.html">Events</a></li>
+          <li><a data-page-link="join" href="join.html">Join</a></li>
+        </ul>
+        <a class="btn btn-primary nav-cta" href="join.html">Join Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container" data-reveal>
+        <p class="eyebrow">Join Process Optimization</p>
+        <h1>Professional Onboarding Funnel for Committed Members</h1>
+        <p class="lead">
+          The YFYD join process is intentionally structured to ensure serious participation,
+          role clarity, and alignment with our community standards.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" data-join-funnel>
+        <div class="funnel-steps" data-reveal>
+          <button class="funnel-step is-active" type="button" data-step-indicator="1">Step 1: Join Community</button>
+          <button class="funnel-step" type="button" data-step-indicator="2">Step 2: Prospectus</button>
+          <button class="funnel-step" type="button" data-step-indicator="3">Step 3: Code of Conduct</button>
+          <button class="funnel-step" type="button" data-step-indicator="4">Step 4: Application Form</button>
+        </div>
+
+        <div class="funnel-panels">
+          <article class="funnel-panel is-active" data-funnel-step="1" data-reveal>
+            <p class="badge">Step 1</p>
+            <h2>Join Button</h2>
+            <p>Click the button below to begin your official onboarding process.</p>
+            <div class="button-row">
+              <button class="btn btn-primary" type="button" id="start-join-process" data-funnel-next="2">Join Community</button>
+            </div>
+          </article>
+
+          <article class="funnel-panel" data-funnel-step="2">
+            <p class="badge">Step 2</p>
+            <h2>Download Community Prospectus</h2>
+            <p>Review the complete YFYD structure, values, and opportunities before applying.</p>
+            <div class="button-row">
+              <a class="btn btn-secondary" href="assets/downloads/yfyd-prospectus.pdf" target="_blank" rel="noopener noreferrer">Open Prospectus</a>
+              <button class="btn btn-primary" type="button" data-funnel-next="3">I Have Reviewed It</button>
+            </div>
+            <button class="text-action" type="button" data-funnel-prev="1">Back to Step 1</button>
+          </article>
+
+          <article class="funnel-panel" data-funnel-step="3">
+            <p class="badge">Step 3</p>
+            <h2>Mandatory Code of Conduct Acknowledgement</h2>
+            <p>Members must acknowledge the code of conduct before they can proceed to application.</p>
+            <div class="button-row">
+              <a class="btn btn-secondary" href="assets/downloads/code-of-conduct.pdf" target="_blank" rel="noopener noreferrer">Read Code of Conduct</a>
+            </div>
+            <label class="consent-row" for="conduct-ack">
+              <input id="conduct-ack" type="checkbox" />
+              I have read and agree to follow the YFYD Code of Conduct.
+            </label>
+            <div class="button-row">
+              <button class="btn btn-primary" type="button" id="proceed-to-application" disabled>Proceed to Application</button>
+            </div>
+            <button class="text-action" type="button" data-funnel-prev="2">Back to Step 2</button>
+          </article>
+
+          <article class="funnel-panel" data-funnel-step="4">
+            <p class="badge">Step 4</p>
+            <h2>Application Form</h2>
+            <p>Complete your final application through the YFYD form.</p>
+            <div class="button-row">
+              <a class="btn btn-primary" href="https://forms.gle/replace-with-yfyd-form" target="_blank" rel="noopener noreferrer">Open Application Form</a>
+            </div>
+            <p class="funnel-note">
+              Update the Google Form URL in this button once your final application link is confirmed.
+            </p>
+            <button class="text-action" type="button" data-funnel-prev="3">Back to Step 3</button>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <section>
+        <h3>Youth for Youth Development</h3>
+        <p>
+          A structured youth platform operating on corporate standards to bridge academic learning and professional readiness.
+        </p>
+      </section>
+      <section>
+        <h4>Organization</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Downloads</h4>
+        <ul>
+          <li><a href="assets/downloads/yfyd-prospectus.pdf" target="_blank" rel="noopener noreferrer">Community Prospectus</a></li>
+          <li><a href="assets/downloads/code-of-conduct.pdf" target="_blank" rel="noopener noreferrer">Code of Conduct</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@yfyd.org">contact@yfyd.org</a></li>
+          <li>Kozhikode, Kerala</li>
+        </ul>
+      </section>
+    </div>
+    <div class="container footer-bottom">
+      <p>Copyright <span id="year"></span> YFYD. All rights reserved.</p>
+      <a href="join.html">Join Community</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

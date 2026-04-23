@@ -101,55 +101,130 @@
     }
   }
 
-  qa(".join-form").forEach((form) => {
-    const feedback = q(".form-feedback", form);
+  const testimonialRoot = q("[data-testimonial]");
+  if (testimonialRoot) {
+    const testimonials = [
+      {
+        photo: "assets/events/vinod-kannan.jpeg",
+        name: "Mr. Vinod Kannan",
+        designation: "Former CEO - Vistara Airlines<br>Senior Vice President - Singapore Airlines",
+        feedback:
+          "\"It was a great experience interacting with such an enthusiastic and driven community. YFYD is doing an excellent job in empowering students. This is a great initiative and we have to keep this going.\"",
+      },
+    ];
 
-    const setFieldError = (field, message) => {
-      const errorNode = q(`[data-error-for='${field.id}']`, form);
-      if (errorNode) {
-        errorNode.textContent = message || "";
-      }
-      field.setAttribute("aria-invalid", message ? "true" : "false");
-    };
+    const photoNode = q("[data-testimonial-photo]", testimonialRoot);
+    const feedbackNode = q("[data-testimonial-feedback]", testimonialRoot);
+    const nameNode = q("[data-testimonial-name]", testimonialRoot);
+    const designationNode = q("[data-testimonial-designation]", testimonialRoot);
+    const prevButton = q("[data-testimonial-prev]");
+    const nextButton = q("[data-testimonial-next]");
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
+    let index = 0;
 
-      let valid = true;
-      const requiredFields = qa("[required]", form);
-
-      requiredFields.forEach((field) => {
-        const value = field.value.trim();
-        let message = "";
-
-        if (!value) {
-          message = "This field is required.";
-        } else if (field.type === "email") {
-          const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-          if (!emailOk) {
-            message = "Enter a valid email address.";
-          }
-        }
-
-        setFieldError(field, message);
-        if (message) {
-          valid = false;
-        }
-      });
-
-      if (!valid) {
-        if (feedback) {
-          feedback.style.color = "#b13b3b";
-          feedback.textContent = "Please complete the highlighted fields.";
-        }
+    const renderTestimonial = () => {
+      const current = testimonials[index];
+      if (!current) {
         return;
       }
-
-      if (feedback) {
-        feedback.style.color = "#2e6f4f";
-        feedback.textContent = "Thank you. Your request has been recorded. Our team will connect with you shortly.";
+      if (photoNode) {
+        photoNode.src = current.photo;
+        photoNode.alt = current.name;
       }
-      form.reset();
+      if (feedbackNode) {
+        feedbackNode.textContent = current.feedback;
+      }
+      if (nameNode) {
+        nameNode.textContent = current.name;
+      }
+      if (designationNode) {
+        designationNode.innerHTML = current.designation;
+      }
+    };
+
+    if (prevButton) {
+      prevButton.disabled = testimonials.length < 2;
+      prevButton.addEventListener("click", () => {
+        index = (index - 1 + testimonials.length) % testimonials.length;
+        renderTestimonial();
+      });
+    }
+
+    if (nextButton) {
+      nextButton.disabled = testimonials.length < 2;
+      nextButton.addEventListener("click", () => {
+        index = (index + 1) % testimonials.length;
+        renderTestimonial();
+      });
+    }
+
+    renderTestimonial();
+  }
+
+  const joinFunnel = q("[data-join-funnel]");
+  if (joinFunnel) {
+    const indicators = qa("[data-step-indicator]", joinFunnel);
+    const panels = qa("[data-funnel-step]", joinFunnel);
+    const nextButtons = qa("[data-funnel-next]", joinFunnel);
+    const prevButtons = qa("[data-funnel-prev]", joinFunnel);
+    const conductAck = q("#conduct-ack", joinFunnel);
+    const proceedToApplication = q("#proceed-to-application", joinFunnel);
+
+    const setStep = (step) => {
+      indicators.forEach((indicator) => {
+        const isCurrent = Number(indicator.getAttribute("data-step-indicator")) === step;
+        indicator.classList.toggle("is-active", isCurrent);
+      });
+
+      panels.forEach((panel) => {
+        const isCurrent = Number(panel.getAttribute("data-funnel-step")) === step;
+        panel.classList.toggle("is-active", isCurrent);
+      });
+    };
+
+    indicators.forEach((indicator) => {
+      indicator.addEventListener("click", () => {
+        const targetStep = Number(indicator.getAttribute("data-step-indicator"));
+        if (targetStep) {
+          setStep(targetStep);
+        }
+      });
     });
-  });
+
+    nextButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetStep = Number(button.getAttribute("data-funnel-next"));
+        if (targetStep) {
+          setStep(targetStep);
+        }
+      });
+    });
+
+    prevButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetStep = Number(button.getAttribute("data-funnel-prev"));
+        if (targetStep) {
+          setStep(targetStep);
+        }
+      });
+    });
+
+    if (conductAck && proceedToApplication) {
+      const updateProceedState = () => {
+        proceedToApplication.disabled = !conductAck.checked;
+      };
+
+      conductAck.addEventListener("change", updateProceedState);
+      proceedToApplication.addEventListener("click", () => {
+        if (!conductAck.checked) {
+          return;
+        }
+        setStep(4);
+      });
+
+      updateProceedState();
+    }
+
+    setStep(1);
+  }
 })();

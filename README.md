@@ -5,14 +5,19 @@ Professional multi-page website for Youth for Youth Development (YFYD), built wi
 ## Pages
 
 - `index.html` - Home
-- `about.html` - Organization overview, problem statement, mission and vision
-- `contact.html` - Join form and contact details
+- `about.html` - Corporate hierarchy, departments, board members, and member mapping
+- `events.html` - Events dashboard with Hunt X and Excel Leadership Series
+- `join.html` - Structured onboarding funnel
+- `contact.html` - Legacy redirect to `join.html`
 
 ## Assets
 
 - `assets/css/style.css` - Shared design system and responsive layout
-- `assets/js/main.js` - Navigation behavior, animations, and form validation
+- `assets/js/main.js` - Navigation behavior, animations, testimonials, and funnel logic
 - `assets/yfydlogo_small.png` - Brand logo
+- `assets/downloads/` - Prospectus, code of conduct, event brief PDFs
+- `assets/events/` - Event and testimonial images
+- `assets/partners/` - Collaboration partner logos
 
 ## Run Locally
 
