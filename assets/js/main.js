@@ -101,8 +101,8 @@
     }
   }
 
-  const testimonialRoot = q("[data-testimonial]");
-  if (testimonialRoot) {
+  const testimonialListRoot = q("[data-testimonial-list]");
+  if (testimonialListRoot) {
     const testimonials = [
       {
         photo: "assets/events/vinod-kannan.jpeg",
@@ -120,52 +120,60 @@
       },
     ];
 
-    const photoNode = q("[data-testimonial-photo]", testimonialRoot);
-    const feedbackNode = q("[data-testimonial-feedback]", testimonialRoot);
-    const nameNode = q("[data-testimonial-name]", testimonialRoot);
-    const designationNode = q("[data-testimonial-designation]", testimonialRoot);
+    const cardsPerPage = 3;
+    const pageCount = Math.ceil(testimonials.length / cardsPerPage);
     const prevButton = q("[data-testimonial-prev]");
     const nextButton = q("[data-testimonial-next]");
+    const controls = q("[data-testimonial-controls]");
 
-    let index = 0;
+    let pageIndex = 0;
 
-    const renderTestimonial = () => {
-      const current = testimonials[index];
-      if (!current) {
-        return;
+    const buildCardMarkup = (testimonial) => {
+      return `
+        <article class="testimonial-card">
+          <img class="testimonial-photo" src="${testimonial.photo}" alt="${testimonial.name}" loading="lazy" />
+          <div>
+            <p class="badge">Industry Feedback</p>
+            <blockquote class="testimonial-feedback">${testimonial.feedback}</blockquote>
+            <p class="testimonial-name">${testimonial.name}</p>
+            <p class="testimonial-designation">${testimonial.designation}</p>
+          </div>
+        </article>
+      `;
+    };
+
+    const renderTestimonials = () => {
+      const start = pageIndex * cardsPerPage;
+      const visibleTestimonials = testimonials.slice(start, start + cardsPerPage);
+      testimonialListRoot.innerHTML = visibleTestimonials.map(buildCardMarkup).join("");
+
+      if (prevButton) {
+        prevButton.disabled = pageIndex === 0;
       }
-      if (photoNode) {
-        photoNode.src = current.photo;
-        photoNode.alt = current.name;
-      }
-      if (feedbackNode) {
-        feedbackNode.textContent = current.feedback;
-      }
-      if (nameNode) {
-        nameNode.textContent = current.name;
-      }
-      if (designationNode) {
-        designationNode.innerHTML = current.designation;
+      if (nextButton) {
+        nextButton.disabled = pageIndex >= pageCount - 1;
       }
     };
 
-    if (prevButton) {
-      prevButton.disabled = testimonials.length < 2;
+    if (controls) {
+      controls.hidden = testimonials.length <= cardsPerPage;
+    }
+
+    if (prevButton && testimonials.length > cardsPerPage) {
       prevButton.addEventListener("click", () => {
-        index = (index - 1 + testimonials.length) % testimonials.length;
-        renderTestimonial();
+        pageIndex = Math.max(0, pageIndex - 1);
+        renderTestimonials();
       });
     }
 
-    if (nextButton) {
-      nextButton.disabled = testimonials.length < 2;
+    if (nextButton && testimonials.length > cardsPerPage) {
       nextButton.addEventListener("click", () => {
-        index = (index + 1) % testimonials.length;
-        renderTestimonial();
+        pageIndex = Math.min(pageCount - 1, pageIndex + 1);
+        renderTestimonials();
       });
     }
 
-    renderTestimonial();
+    renderTestimonials();
   }
 
   const joinFunnel = q("[data-join-funnel]");
