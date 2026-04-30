@@ -111,6 +111,13 @@
         feedback:
           "\"It was a great experience interacting with such an enthusiastic and driven community. YFYD is doing an excellent job in empowering students. This is a great initiative and we have to keep this going.\"",
       },
+      {
+        photo: "assets/events/ap.jpeg",
+        name: "ABULLAKUTTY A P",
+        designation: "President, Calicut Chamber of Commerce & Industry",
+        feedback:
+          "\"Best wishes to the team Youth For youth Development for creating a powerful platform where young people can grow as leaders and connect with each other. Your efforts are truly shaping the future by building confidence, collaboration, and vision among youth. Keep inspiring and empowering.\"",
+      },
     ];
 
     const photoNode = q("[data-testimonial-photo]", testimonialRoot);
