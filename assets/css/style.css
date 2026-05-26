@@ -1018,21 +1018,21 @@ ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-4);
+  align-items: stretch;
 }
 
 .testimonial-card {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-5);
   align-items: center;
-  justify-items: center;
-  height: 100%;
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: var(--space-5);
   box-shadow: var(--shadow-sm);
   text-align: center;
+  height: 100%;
 }
 
 .testimonial-photo {
@@ -1044,12 +1044,27 @@ ul {
   margin: 0 auto;
 }
 
+/* Ensure photo doesn't shrink and stays consistent */
+.testimonial-photo {
+  flex: 0 0 auto;
+}
+
 .testimonial-feedback {
   margin: var(--space-3) 0;
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--ink);
   text-align: center;
+}
+
+/* Clamp feedback to a fixed number of lines for consistent card heights */
+.testimonial-feedback {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5; /* show up to 5 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .testimonial-name {
@@ -1064,6 +1079,71 @@ ul {
   color: var(--ink-soft);
   font-weight: 600;
   text-align: center;
+}
+
+/* Keep name and designation from growing the card unexpectedly */
+.testimonial-name,
+.testimonial-designation {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Ensure the inner content fills available space so all cards align */
+.testimonial-card > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  min-height: 1px; /* allow flex children to stretch properly */
+}
+
+/* Reserve consistent space for feedback and footer */
+.testimonial-card .testimonial-feedback {
+  margin-bottom: var(--space-3);
+}
+
+/* Responsive: horizontal layout on wide screens */
+@media (min-width: 1000px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  }
+
+  .testimonial-card {
+    flex-direction: row;
+    align-items: stretch;
+    padding: calc(var(--space-5) * 0.8);
+  }
+
+  /* (Reverted) full-width nth-child styling removed */
+
+  .testimonial-photo {
+    width: 140px;
+    height: 140px;
+    margin: 0;
+    margin-right: var(--space-5);
+    flex: 0 0 auto;
+  }
+
+  .testimonial-card > div {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .testimonial-feedback {
+    -webkit-line-clamp: 6;
+    text-align: left;
+  }
+
+  .testimonial-name,
+  .testimonial-designation {
+    white-space: normal;
+    text-overflow: clip;
+  }
 }
 
 .testimonial-controls {

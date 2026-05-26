@@ -118,6 +118,13 @@
         feedback:
           "\"Best wishes to the team Youth For youth Development for creating a powerful platform where young people can grow as leaders and connect with each other. Your efforts are truly shaping the future by building confidence, collaboration, and vision among youth. Keep inspiring and empowering.\"",
       },
+      {
+        photo: "assets/events/Arjun-Mohan.png",
+        name: "Mr. Arjun Mohan",
+        designation: "Former CEO of BYJU'S and UpGrad",
+        feedback:
+          "\"Excellent Initiative, Hopefully, this community grows beyond Kerala - across South India, all of India, and even Southeast Asia\"",
+      },
     ];
 
     const cardsPerPage = 3;
