@@ -186,6 +186,26 @@ Leading a purpose-driven youth community focused on bridging the gap between aca
           <button class="btn btn-secondary" type="button" data-testimonial-prev>Previous</button>
           <button class="btn btn-secondary" type="button" data-testimonial-next>Next</button>
         </div>
+
+        <div class="video-testimonial-band" data-reveal>
+          <div class="video-testimonial-copy">
+            <p class="eyebrow">Featured Video Testimonial</p>
+            <h3>Mr. Arjun Mohan on the community's momentum</h3>
+            <!-- <p>
+              Watch the speaker's message on demand. The Drive player is only loaded after you click play,
+              so the page stays fast on first load.
+            </p> -->
+            <!-- <div class="button-row">
+              <button class="btn btn-primary" type="button" data-video-testimonial-open>Watch Video</button>
+              <a class="btn btn-secondary" href="https://drive.google.com/file/d/1LQ1UWMTN0_xrmi1eX28kwCcJTwhFhnHX/view?usp=sharing" target="_blank" rel="noopener noreferrer">Open in Drive</a>
+            </div> -->
+          </div>
+
+          <button class="video-testimonial-card" type="button" data-video-testimonial-open aria-label="Watch the video testimonial from Mr. Arjun Mohan">
+            <img src="assets/events/Arjun-Mohan.png" alt="Mr. Arjun Mohan" loading="lazy" />
+            <span class="video-testimonial-play">Play testimonial</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -246,6 +266,25 @@ Leading a purpose-driven youth community focused on bridging the gap between aca
       <a href="join.html">Join Community</a>
     </div>
   </footer>
+
+  <div class="video-modal" data-video-testimonial-modal hidden>
+    <div class="video-modal-backdrop" data-video-testimonial-close></div>
+    <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="video-testimonial-title">
+      <button class="video-modal-close" type="button" data-video-testimonial-close aria-label="Close video testimonial">&times;</button>
+      <p class="eyebrow">Video Testimonial</p>
+      <h2 id="video-testimonial-title">Mr. Arjun Mohan on YFYD</h2>
+      <!-- <p>Embedded only when opened to keep the homepage light.</p> -->
+      <div class="video-frame-wrap">
+        <iframe
+          data-video-testimonial-iframe
+          title="Video testimonial from Mr. Arjun Mohan"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </div>
 
   <script src="assets/js/main.js" defer></script>
 </body>

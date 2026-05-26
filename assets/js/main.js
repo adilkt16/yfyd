@@ -183,6 +183,51 @@
     renderTestimonials();
   }
 
+  const videoModal = q("[data-video-testimonial-modal]");
+  const videoFrame = q("[data-video-testimonial-iframe]");
+  const openVideoButtons = qa("[data-video-testimonial-open]");
+
+  if (videoModal && videoFrame && openVideoButtons.length) {
+    const videoUrl = "https://drive.google.com/file/d/1LQ1UWMTN0_xrmi1eX28kwCcJTwhFhnHX/preview";
+    const closeButtons = qa("[data-video-testimonial-close]", videoModal);
+    let previouslyFocusedElement = null;
+
+    const openModal = () => {
+      previouslyFocusedElement = document.activeElement;
+      videoFrame.src = videoUrl;
+      videoModal.hidden = false;
+      body.classList.add("video-modal-open");
+      const closeButton = q(".video-modal-close", videoModal);
+      if (closeButton) {
+        closeButton.focus();
+      }
+    };
+
+    const closeModal = () => {
+      videoModal.hidden = true;
+      body.classList.remove("video-modal-open");
+      videoFrame.src = "";
+      if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === "function") {
+        previouslyFocusedElement.focus();
+      }
+      previouslyFocusedElement = null;
+    };
+
+    openVideoButtons.forEach((button) => {
+      button.addEventListener("click", openModal);
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!videoModal.hidden && event.key === "Escape") {
+        closeModal();
+      }
+    });
+  }
+
   const joinFunnel = q("[data-join-funnel]");
   if (joinFunnel) {
     const indicators = qa("[data-step-indicator]", joinFunnel);
