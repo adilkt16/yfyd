@@ -1258,11 +1258,17 @@ ul {
   position: relative;
   z-index: 1;
   width: min(920px, 100%);
+  max-height: min(calc(100svh - var(--space-8)), 92vh);
   background: #ffffff;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: var(--shadow-lg);
   padding: var(--space-5);
+  overflow: auto;
+}
+
+.video-modal-back-button {
+  display: none;
 }
 
 .video-modal-close {
@@ -1314,6 +1320,69 @@ body.video-modal-open {
 
   .video-testimonial-card {
     min-height: 220px;
+  }
+}
+
+@media (max-width: 720px) {
+  .video-modal {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .video-modal-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 100svh;
+    height: 100%;
+    border-radius: 0;
+    padding: calc(var(--space-5) + env(safe-area-inset-top)) var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom));
+    overflow: hidden;
+  }
+
+  .video-modal-back-button {
+    display: inline-flex;
+    position: absolute;
+    top: calc(env(safe-area-inset-top) + var(--space-3));
+    left: var(--space-4);
+    z-index: 2;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0.8rem 1.15rem;
+    border: 1px solid color-mix(in srgb, var(--brand), white 12%);
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--brand), var(--brand-alt));
+    color: #ffffff;
+    font-weight: 900;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+  }
+
+  .video-modal-back-button::before {
+    content: "←";
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .video-modal-dialog .eyebrow,
+  .video-modal-dialog h2 {
+    padding-right: 4.5rem;
+  }
+
+  .video-modal-dialog p {
+    margin-bottom: var(--space-3);
+  }
+
+  .video-frame-wrap {
+    flex: 1;
+    min-height: 0;
+    margin-top: var(--space-2);
+    aspect-ratio: auto;
+  }
+
+  .video-frame-wrap iframe {
+    min-height: 100%;
   }
 }
 
